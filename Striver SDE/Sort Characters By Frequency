@@ -1,0 +1,26 @@
+class Solution {
+public:
+    string frequencySort(string s) {
+        // Count the frequency of each character
+        unordered_map<char, int> freqMap;
+        for (char c : s) {
+            freqMap[c]++;
+        }
+        
+        // Create a vector of pairs (character, frequency)
+        vector<pair<char, int>> charFreq(freqMap.begin(), freqMap.end());
+        
+        // Sort the vector based on frequency in decreasing order
+        sort(charFreq.begin(), charFreq.end(), [](const pair<char, int>& a, const pair<char, int>& b) {
+            return a.second > b.second; // Sort by frequency
+        });
+        
+        // Construct the sorted string
+        string sortedString;
+        for (const auto& p : charFreq) {
+            sortedString += string(p.second, p.first); // Append characters based on frequency
+        }
+        
+        return sortedString;
+    }
+};
