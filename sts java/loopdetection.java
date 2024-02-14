@@ -14,7 +14,7 @@ class Node {
 }
 
 public class loopdetection {
-    public static boolean detectCycle(Node head) {
+    public static Node detectCycle(Node head) {
         Node slow = head;
         Node fast = head;
 
@@ -23,11 +23,11 @@ public class loopdetection {
             fast = fast.next.next;
 
             if (slow == fast) {
-                return true;
+                return slow; // return the node where the loop is detected
             }
         }
 
-        return false;
+        return null; // no loop detected
     }
 
     public static void main(String[] args) {
@@ -43,8 +43,9 @@ public class loopdetection {
         fourth.next = fifth;
         fifth.next = third;
 
-        if (detectCycle(head)) {
-            System.out.println("Loop detected in the linked list.");
+        Node loopNode = detectCycle(head);
+        if (loopNode != null) {
+            System.out.println("Loop detected in the linked list at position: " + loopNode.data);
         } else {
             System.out.println("No loop detected in the linked list.");
         }

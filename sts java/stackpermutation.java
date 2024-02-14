@@ -35,10 +35,10 @@ public class stackpermutation {
         for (int i = 0; i < m; i++) {
             target[i] = scanner.nextInt();
         }
-
+        scanner.close();
         boolean result = isStackPermutation(original, target);
         System.out.println( result);
 
-        scanner.close();
+       
     }
 }
