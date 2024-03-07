@@ -1,0 +1,21 @@
+class Solution {
+public:
+     ListNode* middleNode(ListNode* head) {
+        if (head == nullptr)
+            return nullptr; 
+
+        int count = 0;
+        ListNode* curr;
+        for (curr = head; curr != nullptr; curr = curr->next)
+            count++;
+
+        curr = head;
+        for (int i = 0; i < count / 2; i++)
+            curr = curr->next;
+
+        // Output the value of the middle node (assuming you want to print it)
+        std::cout << curr->val << std::endl;
+
+        return curr;
+    }
+};
